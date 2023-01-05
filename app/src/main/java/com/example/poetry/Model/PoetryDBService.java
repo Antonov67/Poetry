@@ -1,4 +1,7 @@
-package com.example.poetry;
+package com.example.poetry.Model;
+
+import com.example.poetry.Model.Author;
+import com.example.poetry.Model.Authors;
 
 import java.util.List;
 
