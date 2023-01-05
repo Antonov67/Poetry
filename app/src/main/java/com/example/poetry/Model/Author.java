@@ -22,6 +22,7 @@ public class Author implements IntAuthors{
 
     private List<String> authors;
 
+    @Override
     public List<String> getAuthors() {
         return authors;
     }

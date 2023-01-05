@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface IntAuthors {
 
-
+    List<String> getAuthors();
 
 }
