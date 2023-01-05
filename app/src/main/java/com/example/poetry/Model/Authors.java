@@ -1,20 +1,14 @@
 package com.example.poetry.Model;
 
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.example.poetry.MainActivity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Authors implements IntAuthors {
 

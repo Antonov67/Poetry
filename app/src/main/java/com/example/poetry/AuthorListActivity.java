@@ -2,8 +2,8 @@ package com.example.poetry;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,22 +15,12 @@ import android.widget.Toast;
 
 import com.example.poetry.Controller.AuthorsController;
 import com.example.poetry.Controller.IntAuthorsController;
-import com.example.poetry.Model.Author;
-import com.example.poetry.Model.Authors;
-import com.example.poetry.Model.PoetryDBService;
-import com.example.poetry.Model.RetrofitConnection;
 import com.example.poetry.View.IntAuthorsView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-public class MainActivity extends AppCompatActivity implements IntAuthorsView {
+public class AuthorListActivity extends AppCompatActivity implements IntAuthorsView {
 
 
 
@@ -49,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements IntAuthorsView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_author_list);
 
         authorsController = new AuthorsController(this);
 
@@ -58,19 +48,23 @@ public class MainActivity extends AppCompatActivity implements IntAuthorsView {
         author_search_field = findViewById(R.id.author_search_field);
         button_search_author = findViewById(R.id.button_search_author);
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, authorList);
-        author_list_view.setAdapter(adapter);
+
 
         button_search_author.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (author_search_field.getText().toString().length() != 0){
                     authorsController.authors(author_search_field.getText().toString());
-                }else{
-                    authorsController.authors("");
-                }
 
+            }
+        });
+
+        author_list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(AuthorListActivity.this,PoemsActivity.class);
+                intent.putExtra("data", authorList.get(position));
+                startActivity(intent);
             }
         });
 
@@ -79,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements IntAuthorsView {
 
     @Override
     public void setAuthors(List<String> list) {
+        authorList.clear();
+        authorList.addAll(list);
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);
         author_list_view.setAdapter(adapter);
         adapter.notifyDataSetChanged();
