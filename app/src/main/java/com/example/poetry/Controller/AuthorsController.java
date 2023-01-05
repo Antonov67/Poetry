@@ -6,7 +6,7 @@ import com.example.poetry.Model.Authors;
 import com.example.poetry.View.IntAuthorsView;
 import java.util.List;
 
-public class AuthorsController implements IntAuthorsController, Authors.MyCallBack{
+public class AuthorsController implements IntAuthorsController, Authors.MyCallBack, Author.MyCallBack{
 
     IntAuthorsView authorsView;
 
