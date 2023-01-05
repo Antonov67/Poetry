@@ -1,4 +1,4 @@
-package com.example.poetry;
+package com.example.poetry.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.poetry.Controller.AuthorsController;
 import com.example.poetry.Controller.IntAuthorsController;
+import com.example.poetry.R;
 import com.example.poetry.View.IntAuthorsView;
 
 import java.util.ArrayList;
@@ -62,7 +62,7 @@ public class AuthorListActivity extends AppCompatActivity implements IntAuthorsV
         author_list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(AuthorListActivity.this,PoemsActivity.class);
+                Intent intent = new Intent(AuthorListActivity.this, PoemsActivity.class);
                 intent.putExtra("data", authorList.get(position));
                 startActivity(intent);
             }
