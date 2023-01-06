@@ -20,6 +20,9 @@ public interface PoetryDBService {
     @GET("author/{str}/title,lines")
     Call<List<PoemsByAuthor>> getPoemsByAuthor(@Path("str") String str);
 
+    @GET("random")
+    Call<List<RandomPoem>> getRandomPoem();
+
 
 
 }
