@@ -1,6 +1,7 @@
 package com.example.poetry.Model;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -50,6 +51,7 @@ public class Authors implements IntAuthors {
           } catch (IOException e) {
               e.printStackTrace();
           }
+
 
           return authors.getAuthors();
       }
