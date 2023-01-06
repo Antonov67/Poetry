@@ -24,13 +24,13 @@ public class Author implements IntAuthors{
 
     private String searchAuthor;
 
-    public interface MyCallBack{
+    public interface MyCallBackAuthor{
         void callingBack(List<String> list);
     }
 
-    Authors.MyCallBack myCallBack;
+    MyCallBackAuthor myCallBack;
 
-    public void registerCallBack(Authors.MyCallBack myCallBack){
+    public void registerCallBack(MyCallBackAuthor myCallBack){
         this.myCallBack = myCallBack;
     }
 

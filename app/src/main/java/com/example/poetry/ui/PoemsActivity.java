@@ -5,15 +5,22 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.poetry.Controller.IntAuthorsController;
+import com.example.poetry.Controller.PoemsByAuthorController;
+import com.example.poetry.Model.PoemsByAuthor;
 import com.example.poetry.R;
+import com.example.poetry.View.IntPoemsByAuthorView;
 
-public class PoemsActivity extends AppCompatActivity {
+import java.util.List;
+
+public class PoemsActivity extends AppCompatActivity implements IntPoemsByAuthorView {
 
     private TextView authorTitle;
     private ViewPager2 viewPager;
     private OnBoardingAdapter adapter;
+
+    IntAuthorsController poemsByAuthorController;
 
 
     @Override
@@ -24,11 +31,17 @@ public class PoemsActivity extends AppCompatActivity {
         authorTitle = findViewById(R.id.author);
         viewPager = findViewById(R.id.view_pager);
 
-        String str = getIntent().getStringExtra("data");
-        authorTitle.setText(str);
+        String searchAuthor = getIntent().getStringExtra("data");
+        authorTitle.setText(searchAuthor);
 
-        adapter = new OnBoardingAdapter();
+        poemsByAuthorController = new PoemsByAuthorController(this);
+        poemsByAuthorController.data(searchAuthor);
+
+    }
+
+    @Override
+    public void setPoems(List<PoemsByAuthor> list) {
+        adapter = new OnBoardingAdapter(list);
         viewPager.setAdapter(adapter);
-
     }
 }

@@ -54,7 +54,7 @@ public class AuthorListActivity extends AppCompatActivity implements IntAuthorsV
             @Override
             public void onClick(View v) {
 
-                    authorsController.authors(author_search_field.getText().toString());
+                    authorsController.data(author_search_field.getText().toString());
 
             }
         });

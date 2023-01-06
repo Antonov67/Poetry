@@ -18,13 +18,13 @@ public class Authors implements IntAuthors {
     @Expose
     private List<String> authorList = null;
 
-    public interface MyCallBack{
+    public interface MyCallBackAuthors{
         void callingBack(List<String> list);
     }
 
-    MyCallBack myCallBack;
+    MyCallBackAuthors myCallBack;
 
-    public void registerCallBack(MyCallBack myCallBack){
+    public void registerCallBack(MyCallBackAuthors myCallBack){
         this.myCallBack = myCallBack;
     }
 

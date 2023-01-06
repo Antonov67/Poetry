@@ -17,6 +17,9 @@ public interface PoetryDBService {
     @GET("author/{str}/author")
     Call<List<Author>> getAuthorsList(@Path("str") String str);
 
+    @GET("author/{str}/title,lines")
+    Call<List<PoemsByAuthor>> getPoemsByAuthor(@Path("str") String str);
+
 
 
 }

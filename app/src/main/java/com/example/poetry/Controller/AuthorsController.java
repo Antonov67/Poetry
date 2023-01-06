@@ -6,7 +6,7 @@ import com.example.poetry.Model.Authors;
 import com.example.poetry.View.IntAuthorsView;
 import java.util.List;
 
-public class AuthorsController implements IntAuthorsController, Authors.MyCallBack, Author.MyCallBack{
+public class AuthorsController implements IntAuthorsController, Authors.MyCallBackAuthors, Author.MyCallBackAuthor{
 
     IntAuthorsView authorsView;
 
@@ -15,7 +15,7 @@ public class AuthorsController implements IntAuthorsController, Authors.MyCallBa
     }
 
     @Override
-    public void authors(String searchAuthor) {
+    public void data(String searchAuthor) {
         if (searchAuthor.length() == 0){
             Authors authors = new Authors();
             authors.registerCallBack(this::callingBack);
