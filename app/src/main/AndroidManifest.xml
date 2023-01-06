@@ -16,6 +16,13 @@
         android:theme="@style/Theme.Poetry"
         tools:targetApi="31">
         <activity
+            android:name=".ui.RandomPoemActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.PoemsActivity"
             android:exported="false">
             <meta-data

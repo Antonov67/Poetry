@@ -16,6 +16,7 @@ import com.example.poetry.Controller.AuthorsController;
 import com.example.poetry.Controller.IntAuthorsController;
 import com.example.poetry.R;
 import com.example.poetry.View.IntAuthorsView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,9 @@ public class AuthorListActivity extends AppCompatActivity implements IntAuthorsV
     EditText author_search_field;
     TextView title_author_list;
     Button button_search_author;
-
     ListView author_list_view;
+    FloatingActionButton actionButton;
+
     List<String> authorList = new ArrayList<>();
 
     ArrayAdapter adapter;
@@ -47,6 +49,14 @@ public class AuthorListActivity extends AppCompatActivity implements IntAuthorsV
         title_author_list = findViewById(R.id.title_author_list);
         author_search_field = findViewById(R.id.author_search_field);
         button_search_author = findViewById(R.id.button_search_author);
+        actionButton = findViewById(R.id.floatingActionButton);
+
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AuthorListActivity.this, RandomPoemActivity.class));
+            }
+        });
 
 
 
