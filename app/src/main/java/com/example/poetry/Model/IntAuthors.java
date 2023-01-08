@@ -5,5 +5,7 @@ import java.util.List;
 public interface IntAuthors {
 
     List<String> getAuthors();
+    void setAuthors(List<String> list);
+
 
 }

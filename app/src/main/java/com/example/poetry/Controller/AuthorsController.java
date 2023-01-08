@@ -1,6 +1,8 @@
 package com.example.poetry.Controller;
 
 
+import android.util.Log;
+
 import com.example.poetry.Model.Author;
 import com.example.poetry.Model.Authors;
 import com.example.poetry.View.IntAuthorsView;

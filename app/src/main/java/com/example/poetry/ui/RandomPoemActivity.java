@@ -3,6 +3,7 @@ package com.example.poetry.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.poetry.Controller.IntRandomPoemController;
@@ -36,13 +37,17 @@ public class RandomPoemActivity extends AppCompatActivity implements IntRandomPo
 
     @Override
     public void setRandomPoem(List<RandomPoem> poems) {
-        author.setText(poems.get(0).getAuthor());
+
         title.setText(poems.get(0).getTitle());
-        lineCounts.setText("количество строк: " + poems.get(0).getLinecount());
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String str: poems.get(0).getLines()) {
-            stringBuilder.append(str).append("\n");
+        if (poems.get(0).getLines() != null){
+            author.setText(poems.get(0).getAuthor());
+            lineCounts.setText("количество строк: " + poems.get(0).getLinecount());
+            StringBuilder stringBuilder = new StringBuilder();
+            for (String str: poems.get(0).getLines()) {
+                stringBuilder.append(str).append("\n");
+            }
+            poem.setText(stringBuilder);
         }
-        poem.setText(stringBuilder);
+
     }
 }

@@ -7,6 +7,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -39,7 +40,11 @@ public class Authors implements IntAuthors {
             return authorList;
     }
 
-  class ResponseThread extends AsyncTask<Void, Void, List<String>>{
+    public void setAuthors(List<String> authorList) {
+        this.authorList = authorList;
+    }
+
+    class ResponseThread extends AsyncTask<Void, Void, List<String>>{
 
       @Override
       protected List<String> doInBackground(Void... voids) {
@@ -49,6 +54,11 @@ public class Authors implements IntAuthors {
           try {
               authors = call.execute().body();
           } catch (IOException e) {
+              authors = new Authors();
+              List<String> list = new ArrayList<>();
+              list.add("ошибка при получении данных");
+              list.add("проверьте интернет-соединение");
+              authors.setAuthors(list);
               e.printStackTrace();
           }
 

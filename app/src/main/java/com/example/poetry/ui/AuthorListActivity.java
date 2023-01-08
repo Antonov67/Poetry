@@ -67,6 +67,8 @@ public class AuthorListActivity extends AppCompatActivity implements IntAuthorsV
 
                     authorsController.data(author_search_field.getText().toString());
 
+
+
             }
         });
 

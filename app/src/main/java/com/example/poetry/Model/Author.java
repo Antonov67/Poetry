@@ -1,6 +1,7 @@
 package com.example.poetry.Model;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.poetry.ui.AuthorListActivity;
@@ -25,6 +26,11 @@ public class Author implements IntAuthors{
         return authors;
     }
 
+    @Override
+    public void setAuthors(List<String> list) {
+        this.authors = list;
+    }
+
     private String searchAuthor;
 
     public interface MyCallBackAuthor{
@@ -38,6 +44,7 @@ public class Author implements IntAuthors{
     }
 
     public void doSomething(){
+
         ResponseThread responseThread = new ResponseThread();
         responseThread.execute();
     }
@@ -56,20 +63,22 @@ public class Author implements IntAuthors{
 
         @Override
         protected List<String> doInBackground(Void... voids) {
+
             PoetryDBService service = RetrofitConnection.getInstance().getRetrofit().create(PoetryDBService.class);
             Call<List<Author>> call = service.getAuthorsList(searchAuthor);
-
 
             List<Author> list;
             authors = new ArrayList<>();
             try {
-                list = call.execute().body();
 
+                list = call.execute().body();
                 for (Author author: list) {
                    if (!authors.contains(author.getName()))
                     authors.add(author.getName());
                 }
             } catch (IOException e) {
+                authors.add("ошибка при получении данных");
+                authors.add("проверьте интернет-соединение");
                 e.printStackTrace();
             }
             return getAuthors();
@@ -77,6 +86,7 @@ public class Author implements IntAuthors{
 
         @Override
         protected void onPostExecute(List<String> strings) {
+
             myCallBack.callingBack(strings);
         }
     }

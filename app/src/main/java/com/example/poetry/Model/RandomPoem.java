@@ -1,6 +1,7 @@
 package com.example.poetry.Model;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -11,7 +12,7 @@ import java.util.List;
 
 import retrofit2.Call;
 
-public class RandomPoem {
+public class RandomPoem implements IntRandomPoem{
 
     @SerializedName("title")
     @Expose
@@ -28,6 +29,16 @@ public class RandomPoem {
 
 
     private List<RandomPoem> poems;
+
+    @Override
+    public List<RandomPoem> getPoems() {
+        return poems;
+    }
+
+    @Override
+    public void setPoems(List<RandomPoem> list) {
+        poems = list;
+    }
 
 
     public interface MyCallBackRandomPoem{
@@ -61,6 +72,10 @@ public class RandomPoem {
         return linecount;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     class ResponseThread extends AsyncTask<Void, Void, List<RandomPoem>> {
 
         @Override
@@ -76,6 +91,11 @@ public class RandomPoem {
                 poems.addAll(list);
 
             } catch (IOException e) {
+
+                RandomPoem poem = new RandomPoem();
+//                poem.setTitle("ошибка при получении данных" + "\n" + "проверьте интернет-соединение");
+                poem.setTitle("ошибка при получении данных, проверьте интернет-соединение");
+                poems.add(poem);
                 e.printStackTrace();
             }
 
