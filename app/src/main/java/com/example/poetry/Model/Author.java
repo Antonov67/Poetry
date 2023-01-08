@@ -1,7 +1,9 @@
 package com.example.poetry.Model;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
 
+import com.example.poetry.ui.AuthorListActivity;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Retrofit;
 
 public class Author implements IntAuthors{
 
@@ -56,6 +59,7 @@ public class Author implements IntAuthors{
             PoetryDBService service = RetrofitConnection.getInstance().getRetrofit().create(PoetryDBService.class);
             Call<List<Author>> call = service.getAuthorsList(searchAuthor);
 
+
             List<Author> list;
             authors = new ArrayList<>();
             try {
@@ -68,7 +72,6 @@ public class Author implements IntAuthors{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             return getAuthors();
         }
 
