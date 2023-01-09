@@ -27,7 +27,7 @@ public class DataCallController implements IntDataCallController{
     }
 
     public void data(Object[] t) {
-        // запрос данных для случаного стихотворения
+        // запрос данных для случайного стихотворения
         if (view instanceof RandomPoemActivity){
             PoetryDBService service = RetrofitConnection.getInstance().getRetrofit().create(PoetryDBService.class);
             Call<List<RandomPoem>> call = service.getRandomPoem();
@@ -66,9 +66,10 @@ public class DataCallController implements IntDataCallController{
                     }
                 });
             }
+            // общий список авторов
             if ((t[0].toString().length()) == 0) {
                 PoetryDBService service = RetrofitConnection.getInstance().getRetrofit().create(PoetryDBService.class);
-                Call<Authors> call = service.getAuthorsList(); // общий список авторов
+                Call<Authors> call = service.getAuthorsList();
                 call.enqueue(new Callback<Authors>() {
                     @Override
                     public void onResponse(Call<Authors> call, Response<Authors> response) {
@@ -101,7 +102,6 @@ public class DataCallController implements IntDataCallController{
                 }
             });
         }
-
 
 
     }
