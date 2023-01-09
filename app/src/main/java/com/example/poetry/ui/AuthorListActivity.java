@@ -12,8 +12,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.poetry.Controller.AuthorsController;
-import com.example.poetry.Controller.IntAuthorsController;
+import com.example.poetry.Controller.DataCallController;
+import com.example.poetry.Controller.IntDataCallController;
 import com.example.poetry.R;
 import com.example.poetry.View.IntView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,8 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AuthorListActivity extends AppCompatActivity implements IntView<List<String>> {
-
-
 
     EditText author_search_field;
     TextView title_author_list;
@@ -35,7 +33,8 @@ public class AuthorListActivity extends AppCompatActivity implements IntView<Lis
 
     ArrayAdapter adapter;
 
-    IntAuthorsController authorsController;
+    IntDataCallController dataCallController;
+
 
 
     @Override
@@ -43,7 +42,9 @@ public class AuthorListActivity extends AppCompatActivity implements IntView<Lis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_author_list);
 
-        authorsController = new AuthorsController(this);
+        dataCallController = new DataCallController(this);
+
+
 
         author_list_view = findViewById(R.id.author_list);
         title_author_list = findViewById(R.id.title_author_list);
@@ -64,10 +65,7 @@ public class AuthorListActivity extends AppCompatActivity implements IntView<Lis
             @Override
             public void onClick(View v) {
 
-                    authorsController.data(author_search_field.getText().toString());
-
-
-
+                    dataCallController.data(author_search_field.getText().toString());
             }
         });
 
@@ -79,8 +77,6 @@ public class AuthorListActivity extends AppCompatActivity implements IntView<Lis
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override

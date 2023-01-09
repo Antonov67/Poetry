@@ -6,8 +6,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.poetry.Controller.IntAuthorsController;
-import com.example.poetry.Controller.PoemsByAuthorController;
+import com.example.poetry.Controller.DataCallController;
+import com.example.poetry.Controller.IntDataCallController;
 import com.example.poetry.Model.PoemsByAuthor;
 import com.example.poetry.R;
 import com.example.poetry.View.IntView;
@@ -20,7 +20,7 @@ public class PoemsActivity extends AppCompatActivity implements IntView<List<Poe
     private ViewPager2 viewPager;
     private OnBoardingAdapter adapter;
 
-    IntAuthorsController poemsByAuthorController;
+    IntDataCallController dataCallController;
 
 
     @Override
@@ -34,8 +34,8 @@ public class PoemsActivity extends AppCompatActivity implements IntView<List<Poe
         String searchAuthor = getIntent().getStringExtra("data");
         authorTitle.setText(searchAuthor);
 
-        poemsByAuthorController = new PoemsByAuthorController(this);
-        poemsByAuthorController.data(searchAuthor);
+        dataCallController = new DataCallController(this);
+        dataCallController.data(searchAuthor);
 
     }
 

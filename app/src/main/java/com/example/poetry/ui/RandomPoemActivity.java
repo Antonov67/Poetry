@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.poetry.Controller.IntRandomPoemController;
-import com.example.poetry.Controller.RandomPoemController;
+import com.example.poetry.Controller.DataCallController;
+import com.example.poetry.Controller.IntDataCallController;
 import com.example.poetry.Model.RandomPoem;
 import com.example.poetry.R;
 import com.example.poetry.View.IntView;
@@ -17,7 +17,7 @@ public class RandomPoemActivity extends AppCompatActivity implements IntView<Lis
 
     TextView author, title, poem, lineCounts;
 
-    IntRandomPoemController randomPoemController;
+    IntDataCallController dataCallController;
 
 
     @Override
@@ -30,8 +30,8 @@ public class RandomPoemActivity extends AppCompatActivity implements IntView<Lis
         poem = findViewById(R.id.random_poem);
         lineCounts = findViewById(R.id.random_linecount);
 
-        randomPoemController = new RandomPoemController(this);
-        randomPoemController.data();
+        dataCallController = new DataCallController(this);
+        dataCallController.data();
     }
 
     @Override
