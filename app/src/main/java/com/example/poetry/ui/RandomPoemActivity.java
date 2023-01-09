@@ -3,18 +3,17 @@ package com.example.poetry.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.example.poetry.Controller.IntRandomPoemController;
 import com.example.poetry.Controller.RandomPoemController;
 import com.example.poetry.Model.RandomPoem;
 import com.example.poetry.R;
-import com.example.poetry.View.IntRandomPoemView;
+import com.example.poetry.View.IntView;
 
 import java.util.List;
 
-public class RandomPoemActivity extends AppCompatActivity implements IntRandomPoemView {
+public class RandomPoemActivity extends AppCompatActivity implements IntView<List<RandomPoem>> {
 
     TextView author, title, poem, lineCounts;
 
@@ -36,7 +35,7 @@ public class RandomPoemActivity extends AppCompatActivity implements IntRandomPo
     }
 
     @Override
-    public void setRandomPoem(List<RandomPoem> poems) {
+    public void setData(List<RandomPoem> poems) {
 
         title.setText(poems.get(0).getTitle());
         if (poems.get(0).getLines() != null){

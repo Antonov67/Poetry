@@ -5,15 +5,16 @@ import android.util.Log;
 
 import com.example.poetry.Model.Author;
 import com.example.poetry.Model.Authors;
-import com.example.poetry.View.IntAuthorsView;
+import com.example.poetry.View.IntView;
+
 import java.util.List;
 
 public class AuthorsController implements IntAuthorsController, Authors.MyCallBackAuthors, Author.MyCallBackAuthor{
 
-    IntAuthorsView authorsView;
+    IntView authorsView;
 
-    public AuthorsController(IntAuthorsView authorsView) {
-        this.authorsView = authorsView;
+    public AuthorsController(IntView view) {
+        this.authorsView = view;
     }
 
     @Override
@@ -32,6 +33,6 @@ public class AuthorsController implements IntAuthorsController, Authors.MyCallBa
 
     @Override
     public void callingBack(List<String> list) {
-        authorsView.setAuthors(list);
+        authorsView.setData(list);
     }
 }

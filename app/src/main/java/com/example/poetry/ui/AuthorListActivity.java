@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,13 +15,13 @@ import android.widget.TextView;
 import com.example.poetry.Controller.AuthorsController;
 import com.example.poetry.Controller.IntAuthorsController;
 import com.example.poetry.R;
-import com.example.poetry.View.IntAuthorsView;
+import com.example.poetry.View.IntView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AuthorListActivity extends AppCompatActivity implements IntAuthorsView {
+public class AuthorListActivity extends AppCompatActivity implements IntView<List<String>> {
 
 
 
@@ -85,7 +84,7 @@ public class AuthorListActivity extends AppCompatActivity implements IntAuthorsV
     }
 
     @Override
-    public void setAuthors(List<String> list) {
+    public void setData(List<String> list) {
         authorList.clear();
         authorList.addAll(list);
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);

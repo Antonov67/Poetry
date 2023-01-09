@@ -1,15 +1,15 @@
 package com.example.poetry.Controller;
 
 import com.example.poetry.Model.RandomPoem;
-import com.example.poetry.View.IntRandomPoemView;
+import com.example.poetry.View.IntView;
 
 import java.util.List;
 
 public class RandomPoemController implements IntRandomPoemController, RandomPoem.MyCallBackRandomPoem{
 
-    IntRandomPoemView randomPoemView;
+    IntView randomPoemView;
 
-    public RandomPoemController(IntRandomPoemView randomPoemView) {
+    public RandomPoemController(IntView randomPoemView) {
         this.randomPoemView = randomPoemView;
     }
 
@@ -22,6 +22,6 @@ public class RandomPoemController implements IntRandomPoemController, RandomPoem
 
     @Override
     public void callingBack(List<RandomPoem> list) {
-        randomPoemView.setRandomPoem(list);
+        randomPoemView.setData(list);
     }
 }

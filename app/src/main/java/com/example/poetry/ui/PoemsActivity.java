@@ -10,11 +10,11 @@ import com.example.poetry.Controller.IntAuthorsController;
 import com.example.poetry.Controller.PoemsByAuthorController;
 import com.example.poetry.Model.PoemsByAuthor;
 import com.example.poetry.R;
-import com.example.poetry.View.IntPoemsByAuthorView;
+import com.example.poetry.View.IntView;
 
 import java.util.List;
 
-public class PoemsActivity extends AppCompatActivity implements IntPoemsByAuthorView {
+public class PoemsActivity extends AppCompatActivity implements IntView<List<PoemsByAuthor>> {
 
     private TextView authorTitle;
     private ViewPager2 viewPager;
@@ -40,7 +40,7 @@ public class PoemsActivity extends AppCompatActivity implements IntPoemsByAuthor
     }
 
     @Override
-    public void setPoems(List<PoemsByAuthor> list) {
+    public void setData(List<PoemsByAuthor> list) {
         adapter = new OnBoardingAdapter(list);
         viewPager.setAdapter(adapter);
     }

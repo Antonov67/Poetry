@@ -1,15 +1,15 @@
 package com.example.poetry.Controller;
 
 import com.example.poetry.Model.PoemsByAuthor;
-import com.example.poetry.View.IntPoemsByAuthorView;
+import com.example.poetry.View.IntView;
 
 import java.util.List;
 
 public class PoemsByAuthorController implements IntAuthorsController, PoemsByAuthor.MyCallBackPoem {
 
-    IntPoemsByAuthorView poemsByAuthorView;
+    IntView poemsByAuthorView;
 
-    public PoemsByAuthorController(IntPoemsByAuthorView poemsByAuthorView) {
+    public PoemsByAuthorController(IntView poemsByAuthorView) {
         this.poemsByAuthorView = poemsByAuthorView;
     }
 
@@ -23,6 +23,6 @@ public class PoemsByAuthorController implements IntAuthorsController, PoemsByAut
 
     @Override
     public void callingBack(List<PoemsByAuthor> list) {
-        poemsByAuthorView.setPoems(list);
+        poemsByAuthorView.setData(list);
     }
 }
